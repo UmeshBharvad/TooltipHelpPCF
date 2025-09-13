@@ -19,7 +19,20 @@
     </external-service-usage>
     <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
     <property name="value" display-name-key="Value" description-key="Text value for the control" of-type="SingleLine.Text" usage="bound" required="true" />
-    <property name="sampleProperty" display-name-key="Property_Display_Key" description-key="Property_Desc_Key" of-type="SingleLine.Text" usage="bound" required="true" />
+    <property name="tooltipContent" display-name-key="Tooltip Content" description-key="Content to display in the tooltip" of-type="SingleLine.Text" usage="bound" required="true" />
+    <property name="useEnvironmentVariable" display-name-key="Use Environment Variable" description-key="Whether to read the description from an environment variable" of-type="Enum" usage="input" required="true">
+      <value name="true" display-name-key="Yes">true</value>
+      <value name="false" display-name-key="No">false</value>
+    </property>
+    <property name="environmentVariableName" display-name-key="Environment Variable Name" description-key="The name of the environment variable to use" of-type="SingleLine.Text" usage="input" required="false" />
+    <property name="iconPosition" display-name-key="Icon Position" description-key="Position of the help icon relative to the control" of-type="Enum" usage="input" required="true">
+      <value name="left" display-name-key="Left">left</value>
+      <value name="right" display-name-key="Right">right</value>
+    </property>
+    <property name="tooltipStyle" display-name-key="Tooltip Style" description-key="Style of the tooltip content" of-type="Enum" usage="input" required="true">
+      <value name="plainText" display-name-key="Plain Text">plainText</value>
+      <value name="html" display-name-key="HTML">html</value>
+    </property>
     <!--
       Property node's of-type attribute can be of-type-group attribute.
       Example:

@@ -13,14 +13,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Basic component structure
 - Project configuration files
 - Build system setup
+- Help tooltip functionality with Fluent UI components
+- Support for environment variable-based tooltips
+- Configurable icon positioning (left/right)
+- HTML/plain text tooltip content support
+- Responsive and accessible tooltip design
 
 ### Changed
 - Updated project structure to support Fluent UI
 - Modified control manifest for proper property binding
+- Enhanced component with tooltip configuration options
+- Improved type definitions for control properties
 
 ### Fixed
 - ESLint configuration for React compatibility
 - Build process optimization for Fluent UI components
+- Icon import from Fluent UI icons package
 
 ## [0.0.1] - 2025-09-13
 
