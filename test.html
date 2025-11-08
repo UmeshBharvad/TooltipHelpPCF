@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tooltip Help Control - Test Demo</title>
+    <link rel="stylesheet" href="css/TooltipHelpControl.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 40px;
+            background-color: #f5f5f5;
+        }
+        
+        .demo-section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .demo-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #323130;
+        }
+        
+        .demo-row {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .demo-label {
+            min-width: 200px;
+            font-weight: 500;
+        }
+        
+        .form-field {
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🛠️ Tooltip Help Control - Interactive Demo</h1>
+    <p>This demonstrates how the PCF Tooltip Help Control would appear in a Power Apps form:</p>
+
+    <div class="demo-section">
+        <div class="demo-title">Customer Information Form</div>
+        
+        <div class="demo-row">
+            <label class="demo-label">Customer Name:</label>
+            <input type="text" class="form-field" placeholder="Enter customer name">
+            <div class="tooltip-help-container">
+                <button class="help-icon" style="width: 20px; height: 20px; font-size: 12px;" data-tooltip="Enter the full legal name of the customer as it appears on official documents.">?</button>
+            </div>
+        </div>
+
+        <div class="demo-row">
+            <label class="demo-label">Email Address:</label>
+            <input type="email" class="form-field" placeholder="customer@company.com">
+            <div class="tooltip-help-container">
+                <button class="help-icon" style="width: 20px; height: 20px; font-size: 12px;" data-tooltip="<strong>Email Requirements:</strong><br/>• Must be a valid email format<br/>• Will be used for automated notifications<br/>• Customer will receive confirmation emails">?</button>
+            </div>
+        </div>
+
+        <div class="demo-row">
+            <label class="demo-label">Priority Level:</label>
+            <select class="form-field">
+                <option>Standard</option>
+                <option>High</option>
+                <option>Critical</option>
+            </select>
+            <div class="tooltip-help-container">
+                <button class="help-icon" style="width: 20px; height: 20px; font-size: 12px;" data-tooltip="Priority Level determines response time:<br/><br/>• <strong>Standard:</strong> 2-3 business days<br/>• <strong>High:</strong> Same day response<br/>• <strong>Critical:</strong> Immediate escalation">?</button>
+            </div>
+        </div>
+
+        <div class="demo-row">
+            <label class="demo-label">Account Type:</label>
+            <select class="form-field">
+                <option>Individual</option>
+                <option>Business</option>
+                <option>Enterprise</option>
+            </select>
+            <div class="tooltip-help-container">
+                <button class="help-icon" style="width: 20px; height: 20px; font-size: 12px;" data-tooltip="Account types have different features and pricing. Contact your account manager if you need to change account types.">?</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <div class="demo-title">Features Demonstrated</div>
+        <ul>
+            <li>✅ <strong>Hover activation:</strong> Hover over any ? icon to see the tooltip</li>
+            <li>✅ <strong>Click activation:</strong> Click on any ? icon to pin the tooltip</li>
+            <li>✅ <strong>HTML content support:</strong> Rich formatting with bold text and lists</li>
+            <li>✅ <strong>Responsive positioning:</strong> Tooltips automatically position to stay visible</li>
+            <li>✅ <strong>Customizable styling:</strong> Icons and tooltips can be styled to match your theme</li>
+            <li>✅ <strong>Accessibility:</strong> Keyboard navigation and screen reader support</li>
+        </ul>
+    </div>
+
+    <script>
+        // Simple tooltip functionality for demo
+        document.addEventListener('DOMContentLoaded', function() {
+            const helpIcons = document.querySelectorAll('.help-icon');
+            
+            helpIcons.forEach(icon => {
+                const container = icon.parentElement;
+                const tooltipContent = icon.getAttribute('data-tooltip');
+                
+                // Create tooltip element
+                const tooltip = document.createElement('div');
+                tooltip.className = 'tooltip bottom';
+                tooltip.innerHTML = `
+                    <div class="tooltip-content">${tooltipContent}</div>
+                    <button class="tooltip-close">&times;</button>
+                    <div class="tooltip-arrow"></div>
+                `;
+                
+                container.appendChild(tooltip);
+                
+                // Hover events
+                icon.addEventListener('mouseenter', () => {
+                    tooltip.classList.add('show');
+                });
+                
+                icon.addEventListener('mouseleave', () => {
+                    if (!tooltip.classList.contains('pinned')) {
+                        tooltip.classList.remove('show');
+                    }
+                });
+                
+                // Click events
+                icon.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    tooltip.classList.add('show', 'pinned');
+                });
+                
+                // Close button
+                const closeBtn = tooltip.querySelector('.tooltip-close');
+                closeBtn.addEventListener('click', () => {
+                    tooltip.classList.remove('show', 'pinned');
+                });
+                
+                // Click outside to close
+                document.addEventListener('click', (e) => {
+                    if (!container.contains(e.target)) {
+                        tooltip.classList.remove('show', 'pinned');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

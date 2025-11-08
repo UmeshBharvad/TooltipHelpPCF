@@ -1,0 +1,4 @@
+{
+  "extends": ["@microsoft/eslint-config-spfx/lib/profiles/default"],
+  "parserOptions": { "tsconfigRootDir": "." }
+}

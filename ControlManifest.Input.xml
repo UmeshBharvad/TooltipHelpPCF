@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<manifest>
+  <control namespace="Bharvad.Controls" constructor="TooltipHelpControl" version="1.0.0" display-name-key="TooltipHelpControl" description-key="TooltipHelpControl_Description" control-type="standard">
+    
+    <!-- Primary bound property for the control -->
+    <property name="sampleProperty" display-name-key="Property_Display_Key" description-key="Property_Desc_Key" of-type="SingleLine.Text" usage="bound" required="true" />
+    
+    <!-- Content Source Configuration -->
+    <property name="helpContentSource" display-name-key="Help_Content_Source" description-key="Help_Content_Source_Description" of-type="Enum" usage="input" required="false" default-value="controlDescription">
+      <value name="controlDescription" display-name-key="Control_Description_Option">controlDescription</value>
+      <value name="environmentVariable" display-name-key="Environment_Variable_Option">environmentVariable</value>
+      <value name="customContent" display-name-key="Custom_Content_Option">customContent</value>
+    </property>
+    
+    <!-- Environment Variable Name -->
+    <property name="envVariableName" display-name-key="Environment_Variable_Name" description-key="Environment_Variable_Name_Description" of-type="SingleLine.Text" usage="input" required="false" />
+    
+    <!-- Custom Content Text -->
+    <property name="customHelpContent" display-name-key="Custom_Help_Content" description-key="Custom_Help_Content_Description" of-type="Multiple" usage="input" required="false" />
+    
+    <!-- Content Rendering Mode -->
+    <property name="contentRenderMode" display-name-key="Content_Render_Mode" description-key="Content_Render_Mode_Description" of-type="Enum" usage="input" required="false" default-value="plainText">
+      <value name="htmlMode" display-name-key="HTML_Mode">htmlMode</value>
+      <value name="plainText" display-name-key="Plain_Text_Mode">plainText</value>
+    </property>
+    
+    <!-- Help Icon Placement -->
+    <property name="helpIconPlacement" display-name-key="Help_Icon_Placement" description-key="Help_Icon_Placement_Description" of-type="Enum" usage="input" required="false" default-value="after">
+      <value name="before" display-name-key="Before_Control">before</value>
+      <value name="after" display-name-key="After_Control">after</value>
+    </property>
+    
+    <!-- Tooltip Activation Method -->
+    <property name="tooltipActivation" display-name-key="Tooltip_Activation" description-key="Tooltip_Activation_Description" of-type="Enum" usage="input" required="false" default-value="hover">
+      <value name="hoverMode" display-name-key="Hover_Mode">hoverMode</value>
+      <value name="clickMode" display-name-key="Click_Mode">clickMode</value>
+    </property>
+
+    <!-- Styling Properties -->
+    <property name="helpIconSize" display-name-key="Help_Icon_Size" description-key="Help_Icon_Size_Description" of-type="Whole.None" usage="input" required="false" default-value="18" />
+    <property name="helpIconColor" display-name-key="Help_Icon_Color" description-key="Help_Icon_Color_Description" of-type="SingleLine.Text" usage="input" required="false" default-value="#106ebe" />
+    <property name="tooltipMaxWidth" display-name-key="Tooltip_Max_Width" description-key="Tooltip_Max_Width_Description" of-type="Whole.None" usage="input" required="false" default-value="320" />
+    <property name="tooltipBgColor" display-name-key="Tooltip_Background_Color" description-key="Tooltip_Background_Color_Description" of-type="SingleLine.Text" usage="input" required="false" default-value="#2d2d30" />
+    <property name="tooltipTextColor" display-name-key="Tooltip_Text_Color" description-key="Tooltip_Text_Color_Description" of-type="SingleLine.Text" usage="input" required="false" default-value="#f1f1f1" />
+
+    <!-- Control Resources -->
+    <resources>
+      <code path="index.ts" order="1"/>
+      <css path="css/TooltipHelpControl.css" order="1" />
+    </resources>
+    
+    <!-- Required Platform Features -->
+    <feature-usage>
+      <uses-feature name="Utility" required="true" />
+      <uses-feature name="WebAPI" required="true" />
+    </feature-usage>
+  </control>
+</manifest>
